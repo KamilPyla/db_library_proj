@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Readers</h1>
+<h1>Czytelnicy</h1>
 
 <table>
   <thead>
@@ -24,9 +24,9 @@
         <td><%= reader.data_urodzenia %></td>
         <td><%= reader.email %></td>
         <td><%= reader.haslo %></td>
-        <td><%= link_to 'Show', reader %></td>
-        <td><%= link_to 'Edit', edit_reader_path(reader) %></td>
-        <td><%= link_to 'Destroy', reader, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Pokaż', reader %></td>
+        <td><%= link_to 'Edytuj', edit_reader_path(reader) %></td>
+        <td><%= link_to 'Usuń', reader, method: :delete, data: { confirm: 'Jesteś pewien?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -34,4 +34,4 @@
 
 <br>
 
-<%= link_to 'New Reader', new_reader_path %>
+<%= link_to 'Dodaj Czytelnika', new_reader_path %>

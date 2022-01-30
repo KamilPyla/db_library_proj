@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Rents</h1>
+<h1>Wypożyczenia</h1>
 
 <table>
   <thead>
@@ -18,9 +18,9 @@
         <td><%= rent.planowana_data_oddania %></td>
         <td><%= rent.data_wypozyczenia %></td>
         <td><%= rent.data_oddania %></td>
-        <td><%= link_to 'Show', rent %></td>
-        <td><%= link_to 'Edit', edit_rent_path(rent) %></td>
-        <td><%= link_to 'Destroy', rent, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Pokaż', rent %></td>
+        <td><%= link_to 'Edytuj', edit_rent_path(rent) %></td>
+        <td><%= link_to 'Usuń', rent, method: :delete, data: { confirm: 'Jesteś pewien?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +28,4 @@
 
 <br>
 
-<%= link_to 'New Rent', new_rent_path %>
+<%= link_to 'Dodaj Wypożyczenie', new_rent_path %>

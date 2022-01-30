@@ -16,9 +16,9 @@
       <tr>
         <td><%= autor.imie %></td>
         <td><%= autor.nazwisko %></td>
-        <td><%= link_to 'Show', autor %></td>
-        <td><%= link_to 'Edit', edit_autor_path(autor) %></td>
-        <td><%= link_to 'Destroy', autor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Pokaż', autor %></td>
+        <td><%= link_to 'Edytuj', edit_autor_path(autor) %></td>
+        <td><%= link_to 'Usuń', autor, method: :delete, data: { confirm: 'Jesteś pewien?' } %></td>
       </tr>
     <% end %>
   </tbody>

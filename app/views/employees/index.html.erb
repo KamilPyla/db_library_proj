@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Employees</h1>
+<h1>Pracownicy</h1>
 
 <table>
   <thead>
@@ -22,9 +22,9 @@
         <td><%= employee.data_urodzenia %></td>
         <td><%= employee.imie %></td>
         <td><%= employee.nazwisko %></td>
-        <td><%= link_to 'Show', employee %></td>
-        <td><%= link_to 'Edit', edit_employee_path(employee) %></td>
-        <td><%= link_to 'Destroy', employee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Pokaż', employee %></td>
+        <td><%= link_to 'Edytuj', edit_employee_path(employee) %></td>
+        <td><%= link_to 'Usuń', employee, method: :delete, data: { confirm: 'Jesteś pewien?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -32,4 +32,4 @@
 
 <br>
 
-<%= link_to 'New Employee', new_employee_path %>
+<%= link_to 'Dodaj Pracownika', new_employee_path %>

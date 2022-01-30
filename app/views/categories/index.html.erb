@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Categories</h1>
+<h1>Kategorie książek</h1>
 
 <table>
   <thead>
@@ -14,9 +14,9 @@
     <% @categories.each do |category| %>
       <tr>
         <td><%= category.nazwa %></td>
-        <td><%= link_to 'Show', category %></td>
-        <td><%= link_to 'Edit', edit_category_path(category) %></td>
-        <td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Pokaż', category %></td>
+        <td><%= link_to 'Edytuj', edit_category_path(category) %></td>
+        <td><%= link_to 'Usuń', category, method: :delete, data: { confirm: 'Jesteś pewien?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -24,4 +24,4 @@
 
 <br>
 
-<%= link_to 'New Category', new_category_path %>
+<%= link_to 'Dodaj Kategorię', new_category_path %>

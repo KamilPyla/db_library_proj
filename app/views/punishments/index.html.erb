@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Punishments</h1>
+<h1>Wystawione kary</h1>
 
 <table>
   <thead>
@@ -14,9 +14,9 @@
     <% @punishments.each do |punishment| %>
       <tr>
         <td><%= punishment.kwota %></td>
-        <td><%= link_to 'Show', punishment %></td>
-        <td><%= link_to 'Edit', edit_punishment_path(punishment) %></td>
-        <td><%= link_to 'Destroy', punishment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Pokaż', punishment %></td>
+        <td><%= link_to 'Edytuj', edit_punishment_path(punishment) %></td>
+        <td><%= link_to 'Usuń', punishment, method: :delete, data: { confirm: 'Jesteś pewien?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -24,4 +24,4 @@
 
 <br>
 
-<%= link_to 'New Punishment', new_punishment_path %>
+<%= link_to 'Dodaj Karę', new_punishment_path %>
