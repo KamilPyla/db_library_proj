@@ -1,0 +1,47 @@
+<%= form_with(model: reader) do |form| %>
+  <% if reader.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(reader.errors.count, "error") %> prohibited this reader from being saved:</h2>
+
+      <ul>
+        <% reader.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :imie %>
+    <%= form.text_field :imie %>
+  </div>
+
+  <div class="field">
+    <%= form.label :nazwisko %>
+    <%= form.text_field :nazwisko %>
+  </div>
+
+  <div class="field">
+    <%= form.label :telefon %>
+    <%= form.text_field :telefon %>
+  </div>
+
+  <div class="field">
+    <%= form.label :data_urodzenia %>
+    <%= form.date_select :data_urodzenia %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :haslo %>
+    <%= form.text_field :haslo %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
