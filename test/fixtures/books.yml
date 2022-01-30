@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  tytul: MyString
+  rok_wydania: 2022-01-30
+  opis: MyText
+
+two:
+  tytul: MyString
+  rok_wydania: 2022-01-30
+  opis: MyText

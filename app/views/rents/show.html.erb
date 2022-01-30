@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Planowana data oddania:</strong>
+  <%= @rent.planowana_data_oddania %>
+</p>
+
+<p>
+  <strong>Data wypozyczenia:</strong>
+  <%= @rent.data_wypozyczenia %>
+</p>
+
+<p>
+  <strong>Data oddania:</strong>
+  <%= @rent.data_oddania %>
+</p>
+
+<%= link_to 'Edit', edit_rent_path(@rent) %> |
+<%= link_to 'Back', rents_path %>

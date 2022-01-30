@@ -1,0 +1,22 @@
+<%= form_with(model: punishment) do |form| %>
+  <% if punishment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(punishment.errors.count, "error") %> prohibited this punishment from being saved:</h2>
+
+      <ul>
+        <% punishment.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :kwota %>
+    <%= form.text_field :kwota %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  resources :rents
+  resources :publishers
+  resources :punishments
+  resources :books
+  resources :roles
+  resources :employees
   resources :readers
   resources :categories
   resources :autors

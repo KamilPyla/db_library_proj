@@ -1,0 +1,32 @@
+<%= form_with(model: rent) do |form| %>
+  <% if rent.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(rent.errors.count, "error") %> prohibited this rent from being saved:</h2>
+
+      <ul>
+        <% rent.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :planowana_data_oddania %>
+    <%= form.date_select :planowana_data_oddania %>
+  </div>
+
+  <div class="field">
+    <%= form.label :data_wypozyczenia %>
+    <%= form.date_select :data_wypozyczenia %>
+  </div>
+
+  <div class="field">
+    <%= form.label :data_oddania %>
+    <%= form.date_select :data_oddania %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
