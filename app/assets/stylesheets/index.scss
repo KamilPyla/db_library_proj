@@ -145,3 +145,14 @@ input[type=submit]:hover {
   background: #fff;
 }
 
+#notice {
+  display: none;
+  font-style: italic;
+  margin:auto;
+  width: 30%;
+  border: solid;
+  padding: 15px;
+  border-radius: 15px;
+  background: rgba(255,255,255,0.5)
+}
+

@@ -1,69 +1,53 @@
 class PublishersController < ApplicationController
   before_action :set_publisher, only: %i[ show edit update destroy ]
 
-  # GET /publishers or /publishers.json
   def index
     @publishers = Publisher.all
   end
 
-  # GET /publishers/1 or /publishers/1.json
-  def show
-  end
+  def show; end
 
-  # GET /publishers/new
   def new
     @publisher = Publisher.new
   end
 
-  # GET /publishers/1/edit
-  def edit
-  end
+  def edit; end
 
-  # POST /publishers or /publishers.json
   def create
     @publisher = Publisher.new(publisher_params)
 
     respond_to do |format|
       if @publisher.save
-        format.html { redirect_to publisher_url(@publisher), notice: "Publisher was successfully created." }
-        format.json { render :show, status: :created, location: @publisher }
+        format.html { redirect_to publisher_url(@publisher), notice: "Wydawnictwo zostało dodane pomyślnie." }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @publisher.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # PATCH/PUT /publishers/1 or /publishers/1.json
   def update
     respond_to do |format|
       if @publisher.update(publisher_params)
-        format.html { redirect_to publisher_url(@publisher), notice: "Publisher was successfully updated." }
-        format.json { render :show, status: :ok, location: @publisher }
+        format.html { redirect_to publisher_url(@publisher), notice: "Dane wydawnictwa zostały zaukualizowane." }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @publisher.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # DELETE /publishers/1 or /publishers/1.json
   def destroy
     @publisher.destroy
 
     respond_to do |format|
-      format.html { redirect_to publishers_url, notice: "Publisher was successfully destroyed." }
-      format.json { head :no_content }
+      format.html { redirect_to publishers_url, notice: "Wydawnictwo zostało usunięte." }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_publisher
       @publisher = Publisher.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def publisher_params
       params.require(:publisher).permit(:nazwa)
     end
