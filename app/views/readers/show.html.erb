@@ -1,34 +1,31 @@
 <p id="notice"><%= notice %></p>
+<div class='show_data'>
+  <p>
+    <strong>Imie:</strong>
+    <%= @reader.imie %>
+  </p>
 
-<p>
-  <strong>Imie:</strong>
-  <%= @reader.imie %>
-</p>
+  <p>
+    <strong>Nazwisko:</strong>
+    <%= @reader.nazwisko %>
+  </p>
 
-<p>
-  <strong>Nazwisko:</strong>
-  <%= @reader.nazwisko %>
-</p>
+  <p>
+    <strong>Telefon:</strong>
+    <%= @reader.telefon %>
+  </p>
 
-<p>
-  <strong>Telefon:</strong>
-  <%= @reader.telefon %>
-</p>
+  <p>
+    <strong>Data urodzenia:</strong>
+    <%= @reader.data_urodzenia %>
+  </p>
 
-<p>
-  <strong>Data urodzenia:</strong>
-  <%= @reader.data_urodzenia %>
-</p>
+  <p>
+    <strong>Email:</strong>
+    <%= @reader.email %>
+  </p>
 
-<p>
-  <strong>Email:</strong>
-  <%= @reader.email %>
-</p>
-
-<p>
-  <strong>Haslo:</strong>
-  <%= @reader.haslo %>
-</p>
+</div>
 
 <%= link_to 'Edytuj', edit_reader_path(@reader) %> |
 <%= link_to 'Wróć', readers_path %> |

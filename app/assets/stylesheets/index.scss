@@ -110,6 +110,7 @@ a:hover {
 }
 
 input {
+  width: 30%;
   border: solid 2px #570357;
   border-radius: 5px;
   padding: 4px;
@@ -123,6 +124,7 @@ label {
 }
 
 select {
+  width: 30%;
   color: #570357;
   border: solid 2px #570357;
   border-radius: 5px;
@@ -154,5 +156,22 @@ input[type=submit]:hover {
   padding: 15px;
   border-radius: 15px;
   background: rgba(255,255,255,0.5)
+}
+
+textarea {
+  width: 90%;
+  padding: 10px;
+  border: solid 2px #570357;
+  border-radius: 10px;
+}
+
+form, .show_data {
+  background: rgba(255,255,255,0.5);
+  padding: 10px;
+  border-radius: 10px;
+  margin: auto;
+  margin-bottom: 10px;
+  width: 50%;
+  min-width: 430px;
 }
 

@@ -1,34 +1,38 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Login:</strong>
-  <%= @employee.login %>
-</p>
+<div class='show_data'>
+  <p>
+    <strong>Imie:</strong>
+    <%= @employee.imie %>
+  </p>
 
-<p>
-  <strong>Haslo:</strong>
-  <%= @employee.haslo %>
-</p>
+  <p>
+    <strong>Nazwisko:</strong>
+    <%= @employee.nazwisko %>
+  </p>
 
-<p>
-  <strong>Data urodzenia:</strong>
-  <%= @employee.data_urodzenia %>
-</p>
+  <p>
+    <strong>Stanowisko:</strong>
+    <%= @employee.stanowisko %>
+  </p>
 
-<p>
-  <strong>Imie:</strong>
-  <%= @employee.imie %>
-</p>
+  <p>
+    <strong>Data urodzenia:</strong>
+    <%= @employee.data_urodzenia %>
+  </p>
+  
+  <p>
+    <strong>Login:</strong>
+    <%= @employee.login %>
+  </p>
 
-<p>
-  <strong>Nazwisko:</strong>
-  <%= @employee.nazwisko %>
-</p>
+  <p>
+    <strong>Haslo:</strong>
+    <%= @employee.haslo %>
+  </p>
 
-<p>
-  <strong>Stanowisko:</strong>
-  <%= @employee.stanowisko %>
-</p>
+
+</div>
 
 <%= link_to 'Edytuj', edit_employee_path(@employee) %> |
 <%= link_to 'Wróć', employees_path %> |

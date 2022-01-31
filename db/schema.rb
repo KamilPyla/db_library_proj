@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_31_103232) do
+ActiveRecord::Schema.define(version: 2022_01_31_124332) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,12 @@ ActiveRecord::Schema.define(version: 2022_01_31_103232) do
     t.text "opis"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "publisher_id"
+    t.bigint "category_id"
+    t.bigint "autor_id"
+    t.index ["autor_id"], name: "index_books_on_autor_id"
+    t.index ["category_id"], name: "index_books_on_category_id"
+    t.index ["publisher_id"], name: "index_books_on_publisher_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -86,5 +92,8 @@ ActiveRecord::Schema.define(version: 2022_01_31_103232) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "books", "autors"
+  add_foreign_key "books", "categories"
+  add_foreign_key "books", "publishers"
   add_foreign_key "employees", "roles"
 end

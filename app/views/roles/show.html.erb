@@ -1,14 +1,16 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Nazwa:</strong>
-  <%= @role.nazwa %>
-</p>
+<div class='show_data'>
+  <p>
+    <strong>Nazwa:</strong>
+    <%= @role.nazwa %>
+  </p>
 
-<p>
-  <strong>Wyplata:</strong>
-  <%= @role.wyplata %>
-</p>
+  <p>
+    <strong>Wyplata:</strong>
+    <%= @role.wyplata %>
+  </p>
+</div>
 
 <%= link_to 'Edytuj', edit_role_path(@role) %> |
 <%= link_to 'Wróć', roles_path %>

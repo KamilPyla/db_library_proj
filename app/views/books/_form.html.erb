@@ -17,6 +17,22 @@
   </div>
 
   <div class="field">
+    <%= form.label :autor_id %>
+    <%= form.select :autor_id, options_for_select(select_autor) %>
+  </div>
+
+  <div class="field">
+    <%= form.label 'Kategoria' %>
+    <%= form.select :category_id, options_for_select(select_category) %>
+  </div>
+
+  <div class="field">
+    <%= form.label 'Wydawnictwo' %>
+    <%= form.select :publisher_id, options_for_select(select_publisher) %>
+  </div>
+
+
+  <div class="field">
     <%= form.label :rok_wydania %>
     <%= form.date_select :rok_wydania %>
   </div>

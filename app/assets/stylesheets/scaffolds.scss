@@ -2,7 +2,10 @@
 body, p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
-  line-height: 18px; }
+  line-height: 18px;
+  margin: auto;
+  padding: 10px;
+}
 
 pre {
   background-color: #eee;

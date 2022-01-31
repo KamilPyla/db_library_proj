@@ -1,19 +1,21 @@
 <p id="notice"><%= notice %></p>
+<div class='show_data'>
 
-<p>
-  <strong>Tytul:</strong>
-  <%= @book.tytul %>
-</p>
+  <p>
+    <strong>Tytul:</strong>
+    <%= @book.tytul %>
+  </p>
 
-<p>
-  <strong>Rok wydania:</strong>
-  <%= @book.rok_wydania %>
-</p>
+  <p>
+    <strong>Rok wydania:</strong>
+    <%= @book.rok_wydania %>
+  </p>
 
-<p>
-  <strong>Opis:</strong>
-  <%= @book.opis %>
-</p>
+  <p>
+    <strong>Opis:</strong>
+    <%= @book.opis %>
+  </p>
+</div>
 
 <%= link_to 'Edytuj', edit_book_path(@book) %> |
 <%= link_to 'Wróć', books_path %> |
