@@ -49,6 +49,9 @@ class EmployeesController < ApplicationController
 
   # DELETE /employees/1 or /employees/1.json
   def destroy
+    
+    binding.pry
+    
     @employee.destroy
 
     respond_to do |format|
@@ -65,6 +68,6 @@ class EmployeesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def employee_params
-      params.require(:employee).permit(:login, :haslo, :data_urodzenia, :imie, :nazwisko)
+      params.require(:employee).permit(:login, :haslo, :data_urodzenia, :imie, :nazwisko, :role_id)
     end
 end

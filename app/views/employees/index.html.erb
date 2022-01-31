@@ -10,6 +10,7 @@
       <th>Data urodzenia</th>
       <th>Imie</th>
       <th>Nazwisko</th>
+      <th>Stanowisko</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -22,6 +23,7 @@
         <td><%= employee.data_urodzenia %></td>
         <td><%= employee.imie %></td>
         <td><%= employee.nazwisko %></td>
+        <td><%= employee.stanowisko %></td>
         <td><%= link_to 'Pokaż', employee %></td>
         <td><%= link_to 'Edytuj', edit_employee_path(employee) %></td>
         <td><%= link_to 'Usuń', employee, method: :delete, data: { confirm: 'Jesteś pewien?' } %></td>

@@ -10,6 +10,15 @@
       </ul>
     </div>
   <% end %>
+  
+  <div class="field">
+    <%= form.label :imie %>
+    <%= form.text_field :imie %>
+  </div>
+
+  <div class="field">
+    <%= form.label :nazwisko %>
+    <%= form.text_field :nazwisko %>
 
   <div class="field">
     <%= form.label :login %>
@@ -26,14 +35,11 @@
     <%= form.date_select :data_urodzenia %>
   </div>
 
-  <div class="field">
-    <%= form.label :imie %>
-    <%= form.text_field :imie %>
   </div>
 
   <div class="field">
-    <%= form.label :nazwisko %>
-    <%= form.text_field :nazwisko %>
+    <%= form.label :role_id %>
+    <%= form.select :role_id, options_for_select(Role.all.map{|r|[r.nazwa, r.id]}) %>
   </div>
 
   <div class="actions">

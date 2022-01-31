@@ -25,6 +25,11 @@
   <%= @employee.nazwisko %>
 </p>
 
+<p>
+  <strong>Stanowisko:</strong>
+  <%= @employee.stanowisko %>
+</p>
+
 <%= link_to 'Edytuj', edit_employee_path(@employee) %> |
 <%= link_to 'Wróć', employees_path %> |
 <%= link_to 'Dodaj Pracownika', new_employee_path %>
