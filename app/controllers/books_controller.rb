@@ -17,7 +17,7 @@ class BooksController < ApplicationController
 
   def create
     @book = Book.new(book_params)
-
+    
     respond_to do |format|
       if @book.save
         format.html { redirect_to book_url(@book), notice: "Książka została dodana pomyślnie." }
@@ -41,7 +41,7 @@ class BooksController < ApplicationController
     @book.destroy
 
     respond_to do |format|
-      format.html { redirect_to books_url, notice: "Book was successfully destroyed." }
+      format.html { redirect_to books_url, notice: "Książka została usunięta" }
     end
   end
 
@@ -51,6 +51,6 @@ class BooksController < ApplicationController
     end
 
     def book_params
-      params.require(:book).permit(:tytul, :rok_wydania, :opis)
+      params.require(:book).permit(:tytul, :rok_wydania, :opis, :autor_id, :category_id, :publisher_id)
     end
 end

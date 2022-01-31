@@ -16,6 +16,6 @@ ActiveStorage.start()
 
 window.onload = function () {
   var n = document.getElementById('notice');
-  if (n.textContent != '')
+  if (n && n.textContent != '')
     n.style.display = 'inline';
 } 

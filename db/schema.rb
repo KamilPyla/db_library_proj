@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_31_124332) do
+ActiveRecord::Schema.define(version: 2022_01_31_134611) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,6 +64,8 @@ ActiveRecord::Schema.define(version: 2022_01_31_124332) do
     t.float "kwota"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "reader_id"
+    t.index ["reader_id"], name: "index_punishments_on_reader_id"
   end
 
   create_table "readers", force: :cascade do |t|
@@ -96,4 +98,5 @@ ActiveRecord::Schema.define(version: 2022_01_31_124332) do
   add_foreign_key "books", "categories"
   add_foreign_key "books", "publishers"
   add_foreign_key "employees", "roles"
+  add_foreign_key "punishments", "readers"
 end

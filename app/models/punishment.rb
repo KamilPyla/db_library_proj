@@ -1,3 +1,3 @@
 class Punishment < ApplicationRecord
-  has_many :books
+  belongs_to :reader
 end

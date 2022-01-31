@@ -34,7 +34,7 @@
 
   <div class="field">
     <%= form.label :rok_wydania %>
-    <%= form.date_select :rok_wydania %>
+    <%= form.date_select :rok_wydania, discard_day: true, discard_month: true, start_year: Date.today.year - 150, end_date: Date.today.year %>
   </div>
 
   <div class="field">

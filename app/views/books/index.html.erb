@@ -16,7 +16,7 @@
     <% @books.each do |book| %>
       <tr>
         <td><%= book.tytul %></td>
-        <td><%= book.rok_wydania %></td>
+        <td><%= book.rok_wydania.year %></td>
         <td><%= book.opis %></td>
         <td><%= link_to 'Pokaż', book %></td>
         <td><%= link_to 'Edytuj', edit_book_path(book) %></td>

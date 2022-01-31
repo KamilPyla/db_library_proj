@@ -3,7 +3,11 @@
   <p>
     <strong>Kwota:</strong>
     <%= @punishment.kwota %>
-</p>
+  </p>
+  <p>
+    <strong>Czytelnik:</strong>
+    <%= @punishment.reader.name %>
+  </p>
 </div>
 
 <%= link_to 'Edytuj', edit_punishment_path(@punishment) %> |

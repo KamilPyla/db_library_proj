@@ -16,6 +16,11 @@
     <%= form.text_field :kwota %>
   </div>
 
+  <div class="field">
+    <%= form.label 'Czytelnik' %>
+    <%= form.select :reader_id, options_for_select(select_reader) %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>

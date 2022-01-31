@@ -51,6 +51,6 @@ class PunishmentsController < ApplicationController
     end
 
     def punishment_params
-      params.require(:punishment).permit(:kwota)
+      params.require(:punishment).permit(:kwota, :reader_id)
     end
 end

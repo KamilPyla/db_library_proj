@@ -1,5 +1,5 @@
 class Autor < ApplicationRecord
   def name
-    imie + ' ' + nazwisko
+    "#{imie} #{nazwisko}"
   end
 end
