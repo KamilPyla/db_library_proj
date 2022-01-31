@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_31_134611) do
+ActiveRecord::Schema.define(version: 2022_01_31_153650) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -85,6 +85,12 @@ ActiveRecord::Schema.define(version: 2022_01_31_134611) do
     t.date "data_oddania"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "book_id"
+    t.bigint "reader_id"
+    t.integer "employee_rent_id"
+    t.integer "employee_return_id"
+    t.index ["book_id"], name: "index_rents_on_book_id"
+    t.index ["reader_id"], name: "index_rents_on_reader_id"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -99,4 +105,6 @@ ActiveRecord::Schema.define(version: 2022_01_31_134611) do
   add_foreign_key "books", "publishers"
   add_foreign_key "employees", "roles"
   add_foreign_key "punishments", "readers"
+  add_foreign_key "rents", "books"
+  add_foreign_key "rents", "readers"
 end
