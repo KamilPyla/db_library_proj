@@ -187,3 +187,17 @@ footer > p {
   font-size: 15px !important;
   padding: 4px;
 }
+
+.ref_table {
+  border: none;
+  background: none;
+}
+
+.ref_table:hover {
+  border: solid 2px #570357;
+}
+
+.images {
+  width: 100%;
+  border-radius: 5px;
+}

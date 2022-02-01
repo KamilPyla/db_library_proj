@@ -15,7 +15,7 @@
     <% @punishments.each do |punishment| %>
       <tr>
         <td><%= punishment.kwota %></td>
-        <td><%= punishment.reader.name %></td>
+        <td><%= link_to punishment.reader.name, punishment.reader, class: 'ref_table' %></td>
         <td><%= link_to 'Pokaż', punishment %></td>
         <td><%= link_to 'Edytuj', edit_punishment_path(punishment) %></td>
         <td><%= link_to 'Usuń', punishment, method: :delete, data: { confirm: 'Jesteś pewien?' } %></td>

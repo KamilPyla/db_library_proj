@@ -27,19 +27,19 @@
 
   <div class="field">
     <%= form.label :haslo %>
-    <%= form.text_field :haslo %>
+    <%= form.password_field :haslo %>
   </div>
 
   <div class="field">
     <%= form.label :data_urodzenia %>
-    <%= form.date_select :data_urodzenia %>
+    <%= form.date_select :data_urodzenia, start_year: Date.today.year - 80, end_year: Date.today.year - 12 %>
   </div>
 
   </div>
 
   <div class="field">
     <%= form.label :role_id %>
-    <%= form.select :role_id, options_for_select(Role.all.map{ |r| [r.nazwa, r.id] }) %>
+    <%= form.select :role_id, options_for_select(select_role, employee.role_id) %>
   </div>
 
   <div class="actions">

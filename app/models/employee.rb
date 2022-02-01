@@ -1,5 +1,5 @@
 class Employee < ApplicationRecord
-  belongs_to :role
+  belongs_to :role, optional: true
 
   has_many :rents_out, class_name: 'Rent', foreign_key: 'employee_rent_id'
   has_many :rents_back, class_name: 'Rent', foreign_key: 'employee_return_id'
@@ -9,6 +9,6 @@ class Employee < ApplicationRecord
   end
 
   def stanowisko
-    role&.nazwa
+    role&.nazwa 
   end
 end

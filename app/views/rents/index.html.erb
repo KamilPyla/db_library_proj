@@ -5,9 +5,11 @@
 <table>
   <thead>
     <tr>
-      <th>Planowana data oddania</th>
+      <th>Książka</th>
+      <th>Czytelnik</th>
       <th>Data wypozyczenia</th>
-      <th>Data oddania</th>
+      <th>Pracownik wypożyczający</th>
+      <th>Planowana data oddania</th>
       <th colspan="3">Akcje</th>
     </tr>
   </thead>
@@ -15,9 +17,11 @@
   <tbody>
     <% @rents.each do |rent| %>
       <tr>
-        <td><%= rent.planowana_data_oddania %></td>
+        <td><%= link_to rent.book.tytul, rent.book, class: 'ref_table'%></td>
+        <td><%= link_to rent.reader.name, rent.reader, class: 'ref_table' %></td>
+        <td><%= link_to rent.employee_rent.name, rent.employee_rent, class: 'ref_table' %></td>
         <td><%= rent.data_wypozyczenia %></td>
-        <td><%= rent.data_oddania %></td>
+        <td><%= rent.planowana_data_oddania %></td>
         <td><%= link_to 'Pokaż', rent %></td>
         <td><%= link_to 'Edytuj', edit_rent_path(rent) %></td>
         <td><%= link_to 'Usuń', rent, method: :delete, data: { confirm: 'Jesteś pewien?' } %></td>

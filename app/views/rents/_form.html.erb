@@ -12,18 +12,28 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :planowana_data_oddania %>
-    <%= form.date_select :planowana_data_oddania %>
+    <%= form.label :Książka %>
+    <%= form.select :book_id, options_for_select(select_book, rent.book) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Czytelnik %>
+    <%= form.select :reader_id, options_for_select(select_reader, rent.reader) %>
   </div>
 
   <div class="field">
     <%= form.label :data_wypozyczenia %>
-    <%= form.date_select :data_wypozyczenia %>
+    <%= form.date_select :data_wypozyczenia, selected: Date.today, start_year: Date.today.year %>
   </div>
 
   <div class="field">
-    <%= form.label :data_oddania %>
-    <%= form.date_select :data_oddania %>
+    <%= form.label :planowana_data_oddania %>
+    <%= form.date_select :planowana_data_oddania, selected: Date.today + 2.months, start_year: Date.today.year %>
+  </div>
+
+  <div class="field">
+    <%= form.label 'Pracownik wypożyczający' %>
+    <%= form.select :employee_rent_id, options_for_select(select_employee, rent.employee_rent) %>
   </div>
 
   <div class="actions">

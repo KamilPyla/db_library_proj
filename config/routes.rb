@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+
+  root action: :home, controller: 'welcome'
+  get 'help', action: :help, controller: 'welcome'
+  get 'about', action: :about, controller: 'welcome'
+  get 'login', action: :about, controller: 'welcome'
+
+
   resources :rents
   resources :publishers
   resources :punishments
