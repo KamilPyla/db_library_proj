@@ -8,7 +8,7 @@
       <th>Imie</th>
       <th>Nazwisko</th>
       <th>Stanowisko</th>
-      <th>Login</th>
+      <th>Email</th>
       <th>Data urodzenia</th>
       <th colspan="3">Akcje</th>
     </tr>
@@ -20,7 +20,7 @@
         <td><%= employee.imie %></td>
         <td><%= employee.nazwisko %></td>
         <td><%= employee.stanowisko %></td>
-        <td><%= employee.login %></td>
+        <td><%= employee.email %></td>
         <td><%= employee.data_urodzenia %></td>
         <td><%= link_to 'Pokaż', employee %></td>
         <td><%= link_to 'Edytuj', edit_employee_path(employee) %></td>

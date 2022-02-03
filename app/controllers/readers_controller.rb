@@ -5,7 +5,11 @@ class ReadersController < ApplicationController
     @readers = Reader.all
   end
 
-  def show; end
+  def show
+  
+  binding.pry
+  
+  end
 
   def new
     @reader = Reader.new
@@ -18,16 +22,18 @@ class ReadersController < ApplicationController
 
     respond_to do |format|
       if @reader.save
+        log_in(@reader)
         format.html { redirect_to reader_url(@reader), notice: "Dodano czytelnika pomyślnie." }
       else
         format.html { render :new, status: :unprocessable_entity }
       end
     end
   end
-
+  
   def update
     respond_to do |format|
       if @reader.update(reader_params)
+        log_in(@reader)
         format.html { redirect_to reader_url(@reader), notice: "Zaukualizowano dane czytelnika." }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -44,11 +50,12 @@ class ReadersController < ApplicationController
   end
 
   private
-    def set_reader
-      @reader = Reader.find(params[:id])
-    end
 
-    def reader_params
-      params.require(:reader).permit(:imie, :nazwisko, :telefon, :data_urodzenia, :email, :haslo)
-    end
+  def set_reader
+    @reader = Reader.find(params[:id])
+  end
+
+  def reader_params
+    params.require(:reader).permit(:imie, :nazwisko, :telefon, :data_urodzenia, :email, :haslo)
+  end
 end

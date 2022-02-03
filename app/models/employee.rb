@@ -11,4 +11,20 @@ class Employee < ApplicationRecord
   def stanowisko
     role&.nazwa 
   end
+
+  def authenticate(pass)
+    haslo == pass
+  end
+
+  def admin?
+    false
+  end
+
+  def reader?
+    false
+  end
+
+  def employee?
+    true
+  end
 end
