@@ -1,15 +1,13 @@
+# frozen_string_literal: true
+
 class ReadersController < ApplicationController
-  before_action :set_reader, only: %i[ show edit update destroy ]
+  before_action :set_reader, only: %i[show edit update destroy]
 
   def index
     @readers = Reader.all
   end
 
-  def show
-  
-  binding.pry
-  
-  end
+  def show; end
 
   def new
     @reader = Reader.new
@@ -20,33 +18,26 @@ class ReadersController < ApplicationController
   def create
     @reader = Reader.new(reader_params)
 
-    respond_to do |format|
-      if @reader.save
-        log_in(@reader)
-        format.html { redirect_to reader_url(@reader), notice: "Dodano czytelnika pomyślnie." }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-      end
+    if @reader.save
+      log_in(@reader)
+      redirect_to reader_url(@reader), notice: 'Dodano czytelnika pomyślnie.'
+    else
+      render :new, status: :unprocessable_entity
     end
   end
-  
+
   def update
-    respond_to do |format|
-      if @reader.update(reader_params)
-        log_in(@reader)
-        format.html { redirect_to reader_url(@reader), notice: "Zaukualizowano dane czytelnika." }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-      end
+    if @reader.update(reader_params)
+      log_in(@reader)
+      redirect_to reader_url(@reader), notice: 'Zaukualizowano dane czytelnika.'
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
     @reader.destroy
-
-    respond_to do |format|
-      format.html { redirect_to readers_url, notice: "Usunięto czytelnika pomyślnie." }
-    end
+    redirect_to readers_url, notice: 'Usunięto czytelnika pomyślnie.'
   end
 
   private
