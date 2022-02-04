@@ -1,9 +1,5 @@
-<h1> Witamy na stronie biblioteki! </h1>
-  <p id="notice"><%= notice %></p>
-  <nav>
-    <%= link_to 'Załóż konto czytelnika', new_reader_path %>
-    <%= link_to 'Zaloguj się', new_login_path %>
-  </nav>
-<div class='show_data'>
-  <%= image_tag('home_image.jpg', class: 'images') %>
-</div>
+<p id="notice"><%= notice %></p>
+<%= render 'new_home' if current_user.nil? %>
+<%= render 'admin_home' if current_user&.admin? %>
+<%= render 'reader_home' if current_user&.reader? %>
+<%= render 'employee_home' if current_user&.employee? %>

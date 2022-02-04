@@ -1,0 +1,4 @@
+<%= render 'layouts/admin_nav' if current_user&.admin? %>
+<%= render 'layouts/employee_nav' if current_user&.employee? %>
+<%= render 'layouts/reader_nav' if current_user&.reader? %>
+<%= render 'layouts/hello_nav' if current_user.nil?%>

@@ -13,6 +13,10 @@ class ReadersController < ApplicationController
     @reader = Reader.new
   end
 
+  def rents
+    @rents = current_user.rents
+  end
+
   def edit; end
 
   def create

@@ -10,7 +10,6 @@
       <th>Telefon</th>
       <th>Data urodzenia</th>
       <th>Email</th>
-      <th>Haslo</th>
       <th colspan="3">Akcje</th>
     </tr>
   </thead>
@@ -23,7 +22,6 @@
         <td><%= reader.telefon %></td>
         <td><%= reader.data_urodzenia %></td>
         <td><%= reader.email %></td>
-        <td><%= reader.haslo %></td>
         <td><%= link_to 'Pokaż', reader %></td>
         <td><%= link_to 'Edytuj', edit_reader_path(reader) %></td>
         <td><%= link_to 'Usuń', reader, method: :delete, data: { confirm: 'Jesteś pewien?' } %></td>

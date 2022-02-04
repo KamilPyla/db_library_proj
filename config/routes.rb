@@ -3,17 +3,15 @@ Rails.application.routes.draw do
   root action: :home, controller: 'welcome'
   get 'help', action: :help, controller: 'welcome'
   get 'about', action: :about, controller: 'welcome'
-  get 'login', action: :login, controller: 'welcome'
 
-  scope 'login' do
-    get 'new', action: :new, controller: 'sessions', as: :new_login
-    post 'user', action: :create, controller: 'sessions', as: :login_user
-    post 'reader', action: :login_reader, controller: 'sessions', as: :login_reader
-    post 'employee', action: :login_employee, controller: 'sessions', as: :login_employee
-    post 'admin', action: :login_admin, controller: 'sessions', as: :login_admin
-  end
+  get 'login', action: :new, controller: 'sessions'
+  post 'login', action: :create, controller: 'sessions'
 
   post 'log_out', action: :destroy, controller: 'sessions', as: :log_out
+
+  scope 'czytelnik' do
+    get 'moje_wypozyczenia', action: :rents, controller: 'readers', as: :readers_rents
+  end
 
 
   resources :rents

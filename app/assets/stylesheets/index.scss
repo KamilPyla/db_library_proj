@@ -18,7 +18,7 @@ body {
 h1 {
   color: #570357;
   font-size: 45px;
-  padding: 5px;
+  padding: 10px;
 }
 
 nav {
@@ -201,4 +201,14 @@ footer > p {
 .images {
   width: 100%;
   border-radius: 5px;
+}
+
+.home_button, .log_out {
+  padding: 8px;
+  color: #fff;
+  background: #570357;
+}
+
+.home_button:hover, .log_out:hover {
+  border-color: #570357;
 }

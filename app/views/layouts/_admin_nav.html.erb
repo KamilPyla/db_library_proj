@@ -1,4 +1,5 @@
 <nav style='text-align: center'>
+  <%=link_to 'Strona główna', :root        , class: 'home_button' %>
   <%=link_to 'Czytelnicy'   , :readers     , class: 'nav' %>
   <%=link_to 'Wypożyczenia' , :rents       , class: 'nav' %>
   <%=link_to 'Książki'      , :books       , class: 'nav' %>
@@ -8,6 +9,5 @@
   <%=link_to 'Stanowiska'   , :roles       , class: 'nav' %>
   <%=link_to 'Pracownicy'   , :employees   , class: 'nav' %>
   <%=link_to 'Kary'         , :punishments , class: 'nav' %>
-  <%=link_to 'Home'         , :root , class: 'nav' %>
-  <%=link_to 'Wyloguj'      , :log_out , class: 'nav', method: :post %>
+  <%=link_to 'Wyloguj'      , :log_out , class: 'log_out', method: :post %>
 </nav>

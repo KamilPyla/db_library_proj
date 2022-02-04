@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class SessionsController < ApplicationController
+  USER_TYPE = { reader: 'Pracownik', employee: 'Czytelnik', admin: 'Administrator' }
   include SessionHelper
 
   def new; end
@@ -36,9 +37,13 @@ class SessionsController < ApplicationController
   def log(user)
     if correct?(user)
       log_in(user)
-      redirect_to root_path, notice: 'Zalogowano!'
+      redirect_to root_path, notice: log_in_notice
     else
-      redirect_to root_path, notice: 'Niewłaściwy login lub hasło'
+      redirect_to login_path, notice: 'Niewłaściwy login lub hasło'
     end
+  end
+
+  def log_in_notice
+    USER_TYPE[type]
   end
 end
