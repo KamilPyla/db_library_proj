@@ -1,16 +1,18 @@
 # frozen_string_literal: true
 
 class PunishmentsController < ApplicationController
-  before_action :set_punishment, only: %i[show edit update destroy]
+  before_action :set_punishment
 
   def index
     @punishments = Punishment.all
   end
 
-  def show; end
-
   def new
     @punishment = Punishment.new
+  end
+
+  def readers_punishments
+    @reader = Reader.find_by(id: params[:id])
   end
 
   def edit; end
@@ -41,7 +43,7 @@ class PunishmentsController < ApplicationController
   private
 
   def set_punishment
-    @punishment = Punishment.find(params[:id])
+    @punishment = Punishment.find_by(id: params[:id])
   end
 
   def punishment_params

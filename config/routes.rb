@@ -13,6 +13,21 @@ Rails.application.routes.draw do
     get 'moje_wypozyczenia', action: :rents, controller: 'readers', as: :readers_rents
   end
 
+  scope 'wypozyczenia' do
+    get 'czytelnik/:id', action: :readers_rents, controller: 'rents', as: :admin_readers_rents
+    post 'przedluz/:id', action: :prelongate, controller: 'rents', as: :prelongate
+  end
+
+  scope 'kary' do
+    get 'czytelnik/:id', action: :readers_punishments, controller: 'punishments', as: :admin_readers_punishments
+    get 'dodaj/:id', action: :new_punishment, controller: 'readers', as: :add_punishment
+    post 'dodaj/:id', action: :create_punishment, controller: 'readers', as: :create_punishment
+  end
+
+  scope 'ksiazki' do
+    post 'wypozycz/:id', action: :rent, controller: 'books', as: :rent_book
+    post 'return/:id', action: :return, controller: 'rents', as: :return_book
+  end
 
   resources :rents
   resources :publishers

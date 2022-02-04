@@ -6,9 +6,9 @@ class ApplicationRecord < ActiveRecord::Base
   #   find_by_sql(sql)
   # end
 
-  def self.count
-    sql = "SELECT COUNT(*) FROM #{table_name}"
-    ActiveRecord::Base.connection.execute(sql).values[0][0]
-  end
+  # def self.count
+  #   sql = "SELECT COUNT(*) FROM #{table_name}"
+  #   ActiveRecord::Base.connection.execute(sql).values[0][0]
+  # end
 
 end

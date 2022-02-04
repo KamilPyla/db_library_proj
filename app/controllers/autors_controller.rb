@@ -1,13 +1,11 @@
 # frozen_string_literal: true
 
 class AutorsController < ApplicationController
-  before_action :set_autor, only: %i[show edit update destroy]
+  before_action :set_autor
 
   def index
     @autors = Autor.all
   end
-
-  def show; end
 
   def new
     @autor = Autor.new
@@ -41,7 +39,7 @@ class AutorsController < ApplicationController
   private
 
   def set_autor
-    @autor = Autor.find(params[:id])
+    @autor = Autor.find_by(id: params[:id])
   end
 
   def autor_params

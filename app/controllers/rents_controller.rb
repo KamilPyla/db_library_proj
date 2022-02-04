@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class RentsController < ApplicationController
-  before_action :set_rent, only: %i[show edit update destroy]
+  before_action :set_rent
 
   def index
     @rents = Rent.all
@@ -11,6 +11,21 @@ class RentsController < ApplicationController
 
   def new
     @rent = Rent.new
+  end
+
+  def return
+    @rent.update(data_oddania: Date.today)
+    redirect_to :rents
+  end
+
+  def readers_rents
+    @reader = Reader.find_by(id: params[:id])
+  end
+
+  def prelongate
+    @rent.planowana_data_oddania += 1.month
+    
+    redirect_to readers_rents_path, notice: 'Data oddania została przedłużona' if @rent.save!
   end
 
   def edit; end
@@ -40,7 +55,7 @@ class RentsController < ApplicationController
   private
 
   def set_rent
-    @rent = Rent.find(params[:id])
+    @rent = Rent.find_by(id: params[:id])
   end
 
   def rent_params

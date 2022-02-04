@@ -7,8 +7,6 @@ class PublishersController < ApplicationController
     @publishers = Publisher.all
   end
 
-  def show; end
-
   def new
     @publisher = Publisher.new
   end
@@ -40,7 +38,7 @@ class PublishersController < ApplicationController
   private
 
   def set_publisher
-    @publisher = Publisher.find(params[:id])
+    @publisher = Publisher.find_by(id: params[:id])
   end
 
   def publisher_params

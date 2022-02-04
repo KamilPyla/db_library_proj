@@ -12,10 +12,10 @@ Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
-
-
 window.onload = function () {
   var n = document.getElementById('notice');
   if (n && n.textContent != '')
     n.style.display = 'inline';
-} 
+}
+
+

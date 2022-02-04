@@ -9,6 +9,7 @@
       <th>Data wypozyczenia</th>
       <th>Pracownik wypożyczający</th>
       <th>Planowana data oddania</th>
+      <th>Status</th>
       <th >Akcje</th>
     </tr>
   </thead>
@@ -18,9 +19,10 @@
       <tr>
         <td><%= link_to rent.book.tytul, rent.book, class: 'ref_table'%></td>
         <td><%= rent.data_wypozyczenia %></td>
-        <td><%= link_to rent.employee_rent.name, rent.employee_rent, class: 'ref_table' %></td>
+        <td><%= link_to employee_rent(rent), rent.employee_rent, class: 'ref_table' %></td>
         <td><%= rent.planowana_data_oddania %></td>
-        <td><%= link_to 'Przedłuż', rent %></td>
+        <td><%= book_status(rent) %></td>
+        <td><%= link_to 'Przedłuż', prelongate_path(rent), method: "post" %></td>
       </tr>
     <% end %>
   </tbody>

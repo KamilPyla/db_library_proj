@@ -1,0 +1,11 @@
+<%= form_for(:punishment, url: create_punishment_path(@reader)) do |form| %>
+
+  <div class="field">
+    <%= form.label :kwota %>
+    <%= form.text_field :kwota %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Dodaj karę' %>
+  </div>
+<% end %>

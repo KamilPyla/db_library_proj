@@ -6,10 +6,6 @@
   margin-top: 3%;
 }
 
-table {
-  margin: auto;
-}
-
 body {
   background-image: url('./background.jpg');
   height: 1000px;
@@ -50,12 +46,11 @@ tr:nth-child(even) {
 }
 
 th {
-    background-color: #5a75a2;
-    padding: 10px;
-    color: white;
-    padding: 14px;
-    margin: 8px 0;
-    border: solid 2px;
+  background-color: #5a75a2;
+  color: white;
+  padding: 10px;
+  margin: 8px 0;
+  border: solid 2px;
 }
 
 td {
@@ -203,12 +198,39 @@ footer > p {
   border-radius: 5px;
 }
 
+#log_info {
+  position: fixed;
+  right: 10px;
+  border: solid 2px #445da8;
+  border-radius: 10px;
+  font-size: 15px;
+  padding: 10px;
+  color: #fff;
+  background: #570357;
+}
+
+#log_info:hover {
+  background: #445da8;
+  border-color: #570357;
+}
+
 .home_button, .log_out {
   padding: 8px;
   color: #fff;
   background: #570357;
 }
 
+
 .home_button:hover, .log_out:hover {
   border-color: #570357;
 }
+
+.disabled {
+  color: #9b9b9b;
+  border-color: #9b9b9b;
+}
+
+.disabled:hover {
+  background: #9b9b9b;
+}
+

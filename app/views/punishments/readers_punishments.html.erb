@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= "#{@reader.name} - naliczone kary (#{@reader.punishment_sum})"%></h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Kwota</th>
+      <th colspan="3">Akcje</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @reader.punishments.each do |punishment| %>
+      <tr>
+        <td><%= punishment.kwota %></td>
+        <td><%= link_to 'Pokaż', punishment %></td>
+        <td><%= link_to 'Edytuj', edit_punishment_path(punishment) %></td>
+        <td><%= link_to 'Usuń', punishment, method: :delete, data: { confirm: 'Jesteś pewien?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Dodaj Karę', new_punishment_path %>

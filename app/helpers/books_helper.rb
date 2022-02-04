@@ -4,4 +4,8 @@ module BooksHelper
       [book.tytul, book.id]
     end
   end
+
+  def return_button(rent)
+    rent.data_oddania.nil? ? '' : 'disabled'
+  end
 end

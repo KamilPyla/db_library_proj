@@ -10,6 +10,7 @@
       <th>Rok wydania</th>
       <th>Wydawnictwo</th>
       <th>Opis</th>
+      <th>Status</th>
       <% if current_user.reader?%>
         <th colspan="2">Akcje</th>
       <% else %>
@@ -27,9 +28,16 @@
         <td><%= link_to book.publisher.nazwa, book.publisher, class: 'ref_table' %></td>
         <td><%= book.opis %></td>
         <% if current_user.reader?%>
-          <td><%= link_to 'Wypożyczona', '#' unless book.available? %></td>
-          <td><%= link_to 'Wypożycz', book if book.available? %></td>
+
+          <% if book.available? %>
+            <td><%= link_to 'Wypożycz', rent_book_path(book), method: :post %></td>
+          <% else %>
+            <td><%= link_to 'Wypożyczona', '#', class: 'disabled', onclick: 'return false', title: "Planowana data oddania: #{book.rents.active.first&.planowana_data_oddania}" %></td>
+          <%end%>
+          
         <% else %>
+
+          <td><%= book.status %></td>
           <td><%= link_to 'Pokaż', book %></td>
           <td><%= link_to 'Edytuj', edit_book_path(book) %></td>
           <td><%= link_to 'Usuń', book, method: :delete, data: { confirm: 'Jesteś pewien?' } %></td>

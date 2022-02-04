@@ -1,31 +1,31 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Wypożyczenia</h1>
+<h1><%= "#{@reader.name} - wypożyczenia" %></h1>
 
 <table>
   <thead>
     <tr>
       <th>Książka</th>
-      <th>Czytelnik</th>
       <th>Data wypozyczenia</th>
       <th>Pracownik wypożyczający</th>
       <th>Planowana data oddania</th>
       <th>Data oddania</th>
+      <th>Status</th>
       <th colspan="4">Akcje</th>
     </tr>
   </thead>
 
   <tbody>
-    <% @rents.each do |rent| %>
+    <% @reader.rents.each do |rent| %>
       <tr>
         <td><%= link_to rent.book.tytul, rent.book, class: 'ref_table'%></td>
-        <td><%= link_to rent.reader.name, rent.reader, class: 'ref_table' %></td>
         <td><%= rent.data_wypozyczenia %></td>
         <td><%= link_to employee_rent(rent), rent.employee_rent, class: 'ref_table' %></td>
         <td><%= rent.planowana_data_oddania %></td>
         <td><%= rent.return_date %></td>
+        <td><%= book_status(rent) %></td>
         <td><%= link_to 'Oddaj', return_book_path(rent), method: :post, class: return_button(rent) %></td>
-        <td><%= link_to 'Pokaż', rent %></td>
+        <td><%= link_to 'Dodaj karę', add_punishment_path(@reader) %></td>
         <td><%= link_to 'Edytuj', edit_rent_path(rent) %></td>
         <td><%= link_to 'Usuń', rent, method: :delete, data: { confirm: 'Jesteś pewien?' } %></td>
       </tr>

@@ -1,13 +1,11 @@
 # frozen_string_literal: true
 
 class RolesController < ApplicationController
-  before_action :set_role, only: %i[show edit update destroy]
+  before_action :set_role
 
   def index
     @roles = Role.all
   end
-
-  def show; end
 
   def new
     @role = Role.new
@@ -41,7 +39,7 @@ class RolesController < ApplicationController
   private
 
   def set_role
-    @role = Role.find(params[:id])
+    @role = Role.find_by(id: params[:id])
   end
 
   def role_params

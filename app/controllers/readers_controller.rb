@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ReadersController < ApplicationController
-  before_action :set_reader, only: %i[show edit update destroy]
+  before_action :set_reader
 
   def index
     @readers = Reader.all
@@ -23,7 +23,7 @@ class ReadersController < ApplicationController
     @reader = Reader.new(reader_params)
 
     if @reader.save
-      log_in(@reader)
+      log_in(@reader) if current_user.nil?
       redirect_to reader_url(@reader), notice: 'Dodano czytelnika pomyślnie.'
     else
       render :new, status: :unprocessable_entity
@@ -39,18 +39,34 @@ class ReadersController < ApplicationController
     end
   end
 
+  def new_punishment
+    @reader
+  end
+
+  def create_punishment
+    punishment = @reader.punishments.build(kwota: params[:punishment][:kwota])
+
+    if punishment.save!
+      redirect_to admin_readers_rents_path, notice: 'Dodano karę'
+    else
+      redirect_to admin_readers_rents_path, notice: 'Nie udało się dodać kary'
+    end
+  end
+
   def destroy
     @reader.destroy
-    redirect_to readers_url, notice: 'Usunięto czytelnika pomyślnie.'
+    redirect_to readers_url, notice: 'Usunięto czytelnika pomyślnie'
+
   end
 
   private
 
   def set_reader
-    @reader = Reader.find(params[:id])
+    @reader = Reader.find_by(id: params[:id])
   end
 
   def reader_params
     params.require(:reader).permit(:imie, :nazwisko, :telefon, :data_urodzenia, :email, :haslo)
   end
+  
 end
