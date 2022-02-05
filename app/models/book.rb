@@ -4,9 +4,14 @@ class Book < ApplicationRecord
   belongs_to :publisher
   has_many :rents
 
-  scope :available, -> { left_joins(:rents).where(rents: { book_id: nil, data_oddania: nil }) }
+  scope :rented, -> do
+    joins('JOIN rents on rents.book_id = books.id where data_oddania is NULL')
+  end
 
-  scope :rented, -> { joins(:rents).where(rents: { data_oddania: nil }) }
+  scope :available, -> do 
+    joins('LEFT JOIN rents ON rents.book_id = books.id AND rents.data_oddania is NULL')
+    .where('book_id is NULL')
+  end
 
   def available?
     Book.available.include?(self)
@@ -16,4 +21,7 @@ class Book < ApplicationRecord
     available? ? 'Dostępna' : 'Wypożyczona'
   end
 
+  def rents
+    Rent.where("book_id = #{id}")
+  end
 end

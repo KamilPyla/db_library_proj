@@ -14,7 +14,8 @@ class RentsController < ApplicationController
   end
 
   def return
-    @rent.update(data_oddania: Date.today)
+    employee_id = current_user.employee? ? current_user.id : nil
+    @rent.update(data_oddania: Date.today, employee_return_id: employee_id)
     redirect_to :rents
   end
 

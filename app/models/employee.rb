@@ -1,8 +1,8 @@
 class Employee < ApplicationRecord
-  belongs_to :role, optional: true
+  # belongs_to :role, optional: true
 
-  has_many :rents_out, class_name: 'Rent', foreign_key: 'employee_rent_id'
-  has_many :rents_back, class_name: 'Rent', foreign_key: 'employee_return_id'
+  # has_many :rents_out, class_name: 'Rent', foreign_key: 'employee_rent_id'
+  # has_many :rents_back, class_name: 'Rent', foreign_key: 'employee_return_id'
 
   def name
     "#{imie} #{nazwisko}"
@@ -10,6 +10,18 @@ class Employee < ApplicationRecord
 
   def stanowisko
     role&.nazwa 
+  end
+
+  def role
+    Role.where("id = #{role_id}").first
+  end
+
+  def rents_out
+    Rent.where("employee_rent_id = #{id}")
+  end
+
+  def rents_back
+    Rent.where("employee_rent_id = #{id}")
   end
 
   def authenticate(pass)

@@ -1,6 +1,6 @@
 module BooksHelper
   def select_book
-    Book.all.map do |book|
+    Book.available.map do |book|
       [book.tytul, book.id]
     end
   end
