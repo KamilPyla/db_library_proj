@@ -25,4 +25,4 @@
 
 <br>
 
-<%= link_to 'Dodaj Wydawnictwo', new_publisher_path %>
+<%= link_to 'Dodaj Wydawnictwo', new_publisher_path unless current_user.reader? %>

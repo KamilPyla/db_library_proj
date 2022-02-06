@@ -25,4 +25,4 @@
 
 <br>
 
-<%= link_to 'Dodaj Kategorię', new_category_path %>
+<%= link_to 'Dodaj Kategorię', new_category_path unless current_user.reader?%>

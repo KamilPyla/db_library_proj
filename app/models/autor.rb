@@ -1,5 +1,5 @@
 class Autor < ApplicationRecord
-  has_many :books
+  has_many :books, dependent: :destroy
   
   def name
     "#{imie} #{nazwisko}"

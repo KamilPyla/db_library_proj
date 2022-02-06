@@ -3,7 +3,7 @@ class Book < ApplicationRecord
   belongs_to :autor
   belongs_to :category
   belongs_to :publisher
-  has_many :rents
+  has_many :rents, dependent: :destroy
 
   scope :rented, -> do
     joins('JOIN rents on rents.book_id = books.id where data_oddania is NULL')

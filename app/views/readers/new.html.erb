@@ -1,5 +1,7 @@
-<h1>Dodaj Czytelnika</h1>
+<% if current_user.nil? %>
+  <h1>Uzupełnij swoje dane</h1>
+<% else %>
+  <h1>Dodaj Czytelnika</h1>
+<% end %>
 
 <%= render 'form', reader: @reader %>
-
-<%= link_to 'Wróć', readers_path %>

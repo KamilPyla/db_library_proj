@@ -1,6 +1,6 @@
 class Reader < ApplicationRecord
-  has_many :punishments
-  has_many :rents
+  has_many :punishments, dependent: :destroy
+  has_many :rents, dependent: :destroy
 
   scope :best_reader, -> do
     joins('JOIN rents on rents.reader_id = readers.id')

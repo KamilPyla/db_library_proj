@@ -42,6 +42,6 @@
   </div>
 
   <div class="actions">
-    <%= form.submit 'Dodaj / zapisz zmiany' %>
+    <%= form.submit current_user.nil? ? 'Zarejestruj się' : 'Dodaj / zapisz zmiany' %>
   </div>
 <% end %>

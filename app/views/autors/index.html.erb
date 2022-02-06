@@ -27,4 +27,4 @@
 
 <br>
 
-<%= link_to 'Dodaj Autora', new_autor_path %>
+<%= link_to 'Dodaj Autora', new_autor_path unless current_user.reader? %>

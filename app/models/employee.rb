@@ -1,8 +1,8 @@
 class Employee < ApplicationRecord
   # belongs_to :role, optional: true
 
-  # has_many :rents_out, class_name: 'Rent', foreign_key: 'employee_rent_id'
-  # has_many :rents_back, class_name: 'Rent', foreign_key: 'employee_return_id'
+  has_many :rents_out, class_name: 'Rent', foreign_key: 'employee_rent_id', dependent: :destroy
+  has_many :rents_back, class_name: 'Rent', foreign_key: 'employee_return_id', dependent: :destroy
 
   def name
     "#{imie} #{nazwisko}"

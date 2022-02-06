@@ -50,9 +50,9 @@ class ReadersController < ApplicationController
       if current_user.nil?
         log_in(@reader)
         redirect_to root_path, notice: 'Witamy!'
+      else
+        redirect_to reader_path(@reader),  notice: 'Dodano czytelnika pomyślnie.'
       end
-
-      redirect_to reader_url(@reader), notice: 'Dodano czytelnika pomyślnie.'
     else
       render :new, status: :unprocessable_entity
     end
@@ -95,5 +95,4 @@ class ReadersController < ApplicationController
   def reader_params
     params.require(:reader).permit(:imie, :nazwisko, :telefon, :data_urodzenia, :email, :haslo)
   end
-
 end
