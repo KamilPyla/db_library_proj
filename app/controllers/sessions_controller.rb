@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
     log(user)
   end
 
-  def destroy
+  def log_out_user
     log_out
     redirect_to root_path, notice: 'Wylogowano, zapraszamy ponownie'
   end

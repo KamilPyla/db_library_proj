@@ -20,7 +20,7 @@ class Reader < ApplicationRecord
     sql = "SELECT SUM(kwota) FROM punishments WHERE punishments.reader_id = #{id}"
     ActiveRecord::Base.connection.execute(sql).values[0][0] || 0
   end
-  
+
   def rents_sum
     sql = "SELECT COUNT(*) FROM rents WHERE rents.reader_id = #{id}"
     ActiveRecord::Base.connection.execute(sql).values[0][0] || 0
@@ -29,7 +29,7 @@ class Reader < ApplicationRecord
   def name
     "#{imie} #{nazwisko}"
   end
-  
+
   def authenticate(pass)
     haslo == pass
   end

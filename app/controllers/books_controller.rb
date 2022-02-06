@@ -25,6 +25,21 @@ class BooksController < ApplicationController
     @books = Book.most_popular
   end
 
+  def author_books
+    @autor = Autor.find_by(id: params[:id])
+    @books = Book.author(@autor.id)
+  end
+
+  def category_books
+    @category = Category.find_by(id: params[:id])
+    @books = Book.category(params[:id])
+  end
+
+  def publisher_books
+    @publisher = Publisher.find_by(id: params[:id])
+    @books = Book.publisher(params[:id])
+  end
+
   def rent
     rent = Rent.new(reader: current_user, 
                             data_wypozyczenia: Date.today, 
@@ -39,7 +54,7 @@ class BooksController < ApplicationController
     @book = Book.new(book_params)
 
     if @book.save
-      redirect_to book_url(@book), notice: 'Książka została dodana pomyślnie.'
+      redirect_to :all_books, notice: 'Książka została dodana pomyślnie.'
     else
       render :new, status: :unprocessable_entity
     end
@@ -47,7 +62,7 @@ class BooksController < ApplicationController
 
   def update
     if @book.update(book_params)
-      redirect_to book_url(@book), notice: 'Dane książki zostały zaktualizowane'
+      redirect_to :all_books, notice: 'Dane książki zostały zaktualizowane'
     else
       render :edit, status: :unprocessable_entity
     end
@@ -55,7 +70,7 @@ class BooksController < ApplicationController
 
   def destroy
     @book.destroy
-    redirect_to books_url, notice: 'Książka została usunięta'
+    redirect_to :all_books, notice: 'Książka została usunięta'
   end
 
   private

@@ -13,13 +13,9 @@
       <th>Imie</th>
       <th>Nazwisko</th>
       <th>Telefon</th>
-      <th>Data urodzenia</th>
       <th>Email</th>
       <th>Wypożyczenia</th>
       <th>Liczba wypożyczeń</th>
-      <th>Kary</th>
-      <th>Suma kar</th>
-      <th colspan="3">Akcje</th>
     </tr>
   </thead>
 
@@ -29,15 +25,9 @@
         <td><%= reader.imie %></td>
         <td><%= reader.nazwisko %></td>
         <td><%= reader.telefon %></td>
-        <td><%= reader.data_urodzenia %></td>
         <td><%= reader.email %></td>
         <td><%= link_to 'Wypożyczenia', admin_readers_rents_path(reader), class: 'ref_table' %></td>
         <td><%= reader.rents_sum %></td>
-        <td><%= link_to 'Naliczone kary', admin_readers_punishments_path(reader), class: 'ref_table' %></td>
-        <td><%= reader.punishment_sum %></td>
-        <td><%= link_to 'Pokaż', reader %></td>
-        <td><%= link_to 'Edytuj', edit_reader_path(reader) %></td>
-        <td><%= link_to 'Usuń', reader, method: :delete, data: { confirm: 'Jesteś pewien?' } %></td>
       </tr>
     <% end %>
   </tbody>

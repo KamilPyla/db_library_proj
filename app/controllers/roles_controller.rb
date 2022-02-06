@@ -17,7 +17,7 @@ class RolesController < ApplicationController
     @role = Role.new(role_params)
 
     if @role.save
-      redirect_to role_url(@role), notice: 'Stanowisko zostało dodnano.'
+      redirect_to role_url(@role), notice: 'Stanowisko zostało dodane.'
     else
       render :new, status: :unprocessable_entity
     end

@@ -9,6 +9,14 @@ class ReadersController < ApplicationController
 
   def show; end
 
+  def rank_readers
+    @readers = Reader.best_reader
+  end
+
+  def best
+    @readers = Reader.best_reader
+  end
+
   def new
     @reader = Reader.new
   end
@@ -39,7 +47,11 @@ class ReadersController < ApplicationController
     @reader = Reader.new(reader_params)
 
     if @reader.save
-      log_in(@reader) if current_user.nil?
+      if current_user.nil?
+        log_in(@reader)
+        redirect_to root_path, notice: 'Witamy!'
+      end
+
       redirect_to reader_url(@reader), notice: 'Dodano czytelnika pomyślnie.'
     else
       render :new, status: :unprocessable_entity

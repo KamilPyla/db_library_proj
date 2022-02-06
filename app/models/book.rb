@@ -4,22 +4,22 @@ class Book < ApplicationRecord
   belongs_to :publisher
   has_many :rents
 
-  scope :rented, lambda do
+  scope :rented, -> do
     joins('JOIN rents on rents.book_id = books.id where data_oddania is NULL')
   end
 
-  scope :available, lambda do
+  scope :available, -> do
     joins('LEFT JOIN rents ON rents.book_id = books.id AND rents.data_oddania is NULL')
     .where('book_id is NULL')
   end
 
-  scope :most_popular, lambda do
+  scope :most_popular, -> do
     joins('JOIN rents on rents.book_id = books.id')
     .group('books.id')
     .order('count(books.id) DESC')
   end
 
-  scope :autor, ->(autor) { where(autor_id: autor) }
+  scope :author, ->(autor) { where(autor_id: autor) }
 
   scope :category, ->(category) { where(category_id: category) }
 

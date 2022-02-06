@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get 'login', action: :new, controller: 'sessions'
   post 'login', action: :create, controller: 'sessions'
 
-  post 'log_out', action: :destroy, controller: 'sessions', as: :log_out
+  post 'log_out', action: :log_out_user, controller: 'sessions', as: :log_out
 
   scope 'czytelnik' do
     scope 'wypozyczenia' do
@@ -18,6 +18,11 @@ Rails.application.routes.draw do
       get 'po_terminie', action: :rents_out_of_term, controller: 'readers', as: :readers_rents_out_of_term
     end
     get 'moje kary', action: :punishments, controller: 'readers', as: :readers_punishments
+  end
+
+  scope 'czytelnicy' do
+    get 'wszyscy', action: :index, controller: 'readers', as: :all_readers
+    get 'ranking', action: :best, controller: 'readers', as: :best_readers
   end
 
   scope 'wypozyczenia' do
@@ -40,6 +45,11 @@ Rails.application.routes.draw do
     get 'dostepne', action: :available, controller: 'books', as: :available_books
     get 'wypozyczone', action: :rented, controller: 'books', as: :rented_books
     get 'popularnosc', action: :most_popular, controller: 'books', as: :popular_books
+
+    get 'autor/:id', action: :author_books, controller: 'books', as: :autor_books
+    get 'kategoria/:id', action: :category_books, controller: 'books', as: :category_books
+    get 'wydawnictwo/:id', action: :publisher_books, controller: 'books', as: :publisher_books
+
     post 'wypozycz/:id', action: :rent, controller: 'books', as: :rent_book
     post 'return/:id', action: :return, controller: 'rents', as: :return_book
   end
