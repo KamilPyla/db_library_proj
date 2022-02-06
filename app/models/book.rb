@@ -1,5 +1,4 @@
 class Book < ApplicationRecord
-  require 'faker'
 
   belongs_to :autor
   belongs_to :category
@@ -37,11 +36,5 @@ class Book < ApplicationRecord
 
   def rents
     Rent.where("book_id = #{id}")
-  end
-
-  def self.create_books()
-    
-    binding.pry
-    
   end
 end

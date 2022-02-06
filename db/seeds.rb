@@ -20,15 +20,54 @@ end
 end
 
 15.times do
-  Pulisher.create(nazwa: Faker::Book.publisher)
+  Publisher.create(nazwa: Faker::Book.publisher)
 end
 
-150.times do
+90.times do
   Book.create(tytul: Faker::Book.title,
               autor: Autor.all.sample,
               category: Category.all.sample,
               publisher: Publisher.all.sample,
-              rok_wydania: (1900..2022).to_a.sample,
+              rok_wydania: Faker::Date.between(from: Date.today - 50.years, to: Date.today - 1.year),
               opis: Faker::Lorem.paragraph)
+end
+
+10.times do
+  Faker::Config.locale = 'pl'
+  f_name = Faker::Name.first_name
+  l_name = Faker::Name.last_name
+  email = "#{f_name}.#{l_name}@exaplme.com"
+  Reader.create(imie: f_name,
+                nazwisko: l_name,
+                email: email,
+                telefon: Faker::Number.number(digits: 9),
+                data_urodzenia: Faker::Date.between(from: Date.today - 60.years, to: Date.today - 10.year),
+                haslo: "#{f_name}.#{l_name}")
+end
+
+100.times do
+  data_w = Faker::Date.between(from: Date.today - 4.months, to: Date.today - 3.months)
+  Rent.create(book: Book.available.sample,
+            reader: Reader.all.sample,
+            data_wypozyczenia: data_w,
+            planowana_data_oddania: data_w + 2.months,
+            data_oddania: data_w + 1.month)
+end
+
+70.times do
+  data_w = Faker::Date.between(from: Date.today - 1.month, to: Date.today)
+  Rent.create(book: Book.available.sample,
+            reader: Reader.all.sample,
+            data_wypozyczenia: data_w,
+            planowana_data_oddania: data_w + 1.month)
+end
+          
+10.times do
+  data_w = Faker::Date.between(from: Date.today - 2.months, to: Date.today - 1.month)
+  Rent.create(book: Book.available.sample,
+            reader: Reader.all.sample,
+            data_wypozyczenia: data_w,
+            planowana_data_oddania: data_w + 1.month)
+  
 end
 
