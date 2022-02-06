@@ -6,7 +6,9 @@ class Rent < ApplicationRecord
 
   scope :active, -> { where('data_oddania is NULL') }
 
-  scope :after_term, -> { where('data_oddania is NULL and planowana_data_oddania < ?', Date.today) }
+  scope :inactive, -> { where('data_oddania is not null') }
+
+  scope :out_of_term, -> { where('data_oddania is NULL and planowana_data_oddania < ?', Date.today) }
 
   def return_date
     return 'Książka nie została oddana' if data_oddania.nil?

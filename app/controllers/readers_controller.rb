@@ -44,7 +44,10 @@ class ReadersController < ApplicationController
   end
 
   def create_punishment
-    punishment = @reader.punishments.build(kwota: params[:punishment][:kwota])
+    
+    binding.pry
+    
+    punishment = Punishment.new(kwota: params[:punishment][:kwota], reader_id: params[:id])
 
     if punishment.save!
       redirect_to admin_readers_rents_path, notice: 'Dodano karę'

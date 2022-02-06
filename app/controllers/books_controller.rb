@@ -13,6 +13,14 @@ class BooksController < ApplicationController
     @book = Book.new
   end
 
+  def available
+    @books = Book.available
+  end
+
+  def rented
+    @books = Book.rented
+  end
+
   def rent
     rent = @book.rents.build(reader: current_user, 
                             data_wypozyczenia: Date.today, 

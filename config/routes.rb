@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   root action: :home, controller: 'welcome'
+
   get 'help', action: :help, controller: 'welcome'
   get 'about', action: :about, controller: 'welcome'
 
@@ -14,6 +15,10 @@ Rails.application.routes.draw do
   end
 
   scope 'wypozyczenia' do
+    get 'wszystkie', action: :index, controller: 'rents', as: :all_rents
+    get 'bierzace', action: :active, controller: 'rents', as: :active_rents
+    get 'po_terminie', action: :out_of_term, controller: 'rents', as: :out_of_term_rents
+    get 'oddane', action: :inactive, controller: 'rents', as: :inactive_rents
     get 'czytelnik/:id', action: :readers_rents, controller: 'rents', as: :admin_readers_rents
     post 'przedluz/:id', action: :prelongate, controller: 'rents', as: :prelongate
   end
@@ -25,6 +30,9 @@ Rails.application.routes.draw do
   end
 
   scope 'ksiazki' do
+    get 'wszystkie', action: :index, controller: 'books', as: :all_books
+    get 'dostepne', action: :available, controller: 'books', as: :available_books
+    get 'wypozyczone', action: :rented, controller: 'books', as: :rented_books
     post 'wypozycz/:id', action: :rent, controller: 'books', as: :rent_book
     post 'return/:id', action: :return, controller: 'rents', as: :return_book
   end

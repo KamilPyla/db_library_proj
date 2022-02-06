@@ -7,6 +7,19 @@ class RentsController < ApplicationController
     @rents = Rent.all
   end
 
+  def inactive
+    @rents = Rent.inactive
+  end
+
+  def active
+    @rents = Rent.active
+  end
+
+  def out_of_term
+    @out_of = true
+    @rents = Rent.out_of_term
+  end
+
   def show; end
 
   def new
@@ -25,7 +38,7 @@ class RentsController < ApplicationController
 
   def prelongate
     @rent.planowana_data_oddania += 1.month
-    
+
     redirect_to readers_rents_path, notice: 'Data oddania została przedłużona' if @rent.save!
   end
 
@@ -34,7 +47,7 @@ class RentsController < ApplicationController
   def create
     @rent = Rent.new(rent_params)
     if @rent.save
-      redirect_to rent_url(@rent), notice: 'Dodano wypożyczenie.'
+      redirect_to :all_rents, notice: 'Dodano wypożyczenie.' unless current_user.reader?
     else
       render :new, status: :unprocessable_entity
     end
