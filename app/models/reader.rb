@@ -2,6 +2,12 @@ class Reader < ApplicationRecord
   has_many :punishments
   has_many :rents
 
+  scope :best_reader, -> do
+    joins('JOIN rents on rents.reader_id = readers.id')
+    .group('readers.id')
+    .order('count(readers.id) DESC')
+  end
+
   def rents
     Rent.where("reader_id = #{id}")
   end

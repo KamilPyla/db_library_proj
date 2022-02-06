@@ -13,8 +13,24 @@ class ReadersController < ApplicationController
     @reader = Reader.new
   end
 
-  def rents
+  def rents_all
     @rents = current_user.rents
+  end
+
+  def rents_active
+    @rents = current_user.rents.active
+  end
+
+  def rents_inactive
+    @rents = current_user.rents.inactive
+  end
+
+  def rents_out_of_term
+    @rents = current_user.rents.out_of_term
+  end
+
+  def punishments
+    @punishments = current_user.punishments
   end
 
   def edit; end
@@ -44,9 +60,6 @@ class ReadersController < ApplicationController
   end
 
   def create_punishment
-    
-    binding.pry
-    
     punishment = Punishment.new(kwota: params[:punishment][:kwota], reader_id: params[:id])
 
     if punishment.save!
@@ -59,7 +72,6 @@ class ReadersController < ApplicationController
   def destroy
     @reader.destroy
     redirect_to readers_url, notice: 'Usunięto czytelnika pomyślnie'
-
   end
 
   private
@@ -71,5 +83,5 @@ class ReadersController < ApplicationController
   def reader_params
     params.require(:reader).permit(:imie, :nazwisko, :telefon, :data_urodzenia, :email, :haslo)
   end
-  
+
 end

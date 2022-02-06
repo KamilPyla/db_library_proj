@@ -21,10 +21,15 @@ class BooksController < ApplicationController
     @books = Book.rented
   end
 
+  def most_popular
+    @books = Book.most_popular
+  end
+
   def rent
-    rent = @book.rents.build(reader: current_user, 
+    rent = Rent.new(reader: current_user, 
                             data_wypozyczenia: Date.today, 
-                            planowana_data_oddania: Date.today + 1.month)
+                            planowana_data_oddania: Date.today + 1.month,
+                            book: @book)
     redirect_to books_path, notice: 'Miłego czytania' if rent.save!
   end
 

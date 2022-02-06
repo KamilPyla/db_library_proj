@@ -11,7 +11,13 @@ Rails.application.routes.draw do
   post 'log_out', action: :destroy, controller: 'sessions', as: :log_out
 
   scope 'czytelnik' do
-    get 'moje_wypozyczenia', action: :rents, controller: 'readers', as: :readers_rents
+    scope 'wypozyczenia' do
+      get 'wszystkie', action: :rents_all, controller: 'readers', as: :readers_rents_all
+      get 'aktywne', action: :rents_active, controller: 'readers', as: :readers_rents_active
+      get 'oddane', action: :rents_inactive, controller: 'readers', as: :readers_rents_inactive
+      get 'po_terminie', action: :rents_out_of_term, controller: 'readers', as: :readers_rents_out_of_term
+    end
+    get 'moje kary', action: :punishments, controller: 'readers', as: :readers_punishments
   end
 
   scope 'wypozyczenia' do
@@ -33,6 +39,7 @@ Rails.application.routes.draw do
     get 'wszystkie', action: :index, controller: 'books', as: :all_books
     get 'dostepne', action: :available, controller: 'books', as: :available_books
     get 'wypozyczone', action: :rented, controller: 'books', as: :rented_books
+    get 'popularnosc', action: :most_popular, controller: 'books', as: :popular_books
     post 'wypozycz/:id', action: :rent, controller: 'books', as: :rent_book
     post 'return/:id', action: :return, controller: 'rents', as: :return_book
   end

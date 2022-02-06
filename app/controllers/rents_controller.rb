@@ -28,8 +28,13 @@ class RentsController < ApplicationController
 
   def return
     employee_id = current_user.employee? ? current_user.id : nil
-    @rent.update(data_oddania: Date.today, employee_return_id: employee_id)
-    redirect_to :rents
+    if @rent.data_oddania.nil?
+      @rent.update(data_oddania: Date.today, employee_return_id: employee_id)
+      redirect_to :all_rents
+    else
+      redirect_to :all_rents, notice: 'To wypożyczenie jest już oddane'
+    end
+
   end
 
   def readers_rents
@@ -39,7 +44,7 @@ class RentsController < ApplicationController
   def prelongate
     @rent.planowana_data_oddania += 1.month
 
-    redirect_to readers_rents_path, notice: 'Data oddania została przedłużona' if @rent.save!
+    redirect_to :readers_rents_all, notice: 'Data oddania została przedłużona' if @rent.save!
   end
 
   def edit; end

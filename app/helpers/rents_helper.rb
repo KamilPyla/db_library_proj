@@ -4,6 +4,6 @@ module RentsHelper
   end
 
   def employee_return(rent)
-    rent.employee_rent.id.nil? ? 'Administrator' : rent.employee_return.name
+    rent.employee_return_id.nil? ? 'Administrator' : rent.employee_return.name
   end
 end

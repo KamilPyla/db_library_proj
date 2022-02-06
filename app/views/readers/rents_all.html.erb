@@ -3,7 +3,10 @@
 <h1>Moje wypożyczenia <%= "(#{@rents.count})" %></h1>
 
 <div class='show_data'>
-  <%= link_to 'Wszystkie', :reader_all_rents, class: 'nav' %>
+  <%= link_to 'Wszystkie', :readers_rents_all, class: 'nav' %>
+  <%= link_to 'Bierzące',  :readers_rents_active, class: 'nav' %>
+  <%= link_to 'Po czasie', :readers_rents_out_of_term, class: 'out_of' %>
+  <%= link_to 'Oddane', :readers_rents_inactive, class: 'nav' %>
 </div>
 
 <table>
@@ -13,8 +16,8 @@
       <th>Data wypozyczenia</th>
       <th>Pracownik wypożyczający</th>
       <th>Planowana data oddania</th>
+      <th>Data oddania</th>
       <th>Status</th>
-      <th >Akcje</th>
     </tr>
   </thead>
 
@@ -23,10 +26,10 @@
       <tr>
         <td><%= link_to rent.book.tytul, rent.book, class: 'ref_table'%></td>
         <td><%= rent.data_wypozyczenia %></td>
-        <td><%= link_to employee_rent(rent), rent.employee_rent, class: 'ref_table' %></td>
+        <td><%= employee_rent(rent) %></td>
         <td><%= rent.planowana_data_oddania %></td>
+        <td><%= rent.data_oddania %></td>
         <td><%= book_status(rent) %></td>
-        <td><%= link_to 'Przedłuż', prelongate_path(rent), method: "post" %></td>
       </tr>
     <% end %>
   </tbody>
